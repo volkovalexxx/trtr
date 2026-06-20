@@ -1,0 +1,1979 @@
+.lp {
+  --lp-max: 1120px;
+  --lp-page: #f7f7f4;
+  --lp-page-2: #ece9e2;
+  --lp-ink: #121214;
+  --lp-muted: #67645f;
+  --lp-soft: rgba(18, 18, 20, 0.06);
+  --lp-line: rgba(18, 18, 20, 0.1);
+  --lp-panel: rgba(255, 255, 255, 0.78);
+  --lp-panel-strong: #ffffff;
+  --lp-red: #e8003d;
+  --lp-blue: #2357ff;
+  --lp-green: #0e8f63;
+  --lp-shadow: 0 24px 70px rgba(34, 30, 28, 0.1);
+  --lp-card-shadow: 0 34px 90px rgba(19, 17, 17, 0.22);
+  min-height: 100vh;
+  color: var(--lp-ink);
+  background:
+    linear-gradient(120deg, rgba(232, 0, 61, 0.06), transparent 34%),
+    linear-gradient(180deg, var(--lp-page) 0%, var(--lp-page-2) 100%);
+  font-family: var(--font-body);
+  overflow-x: clip;
+}
+
+[data-theme="dark"] .lp {
+  --lp-page: #070708;
+  --lp-page-2: #121214;
+  --lp-ink: #f7f4ef;
+  --lp-muted: #a5a09a;
+  --lp-soft: rgba(255, 255, 255, 0.07);
+  --lp-line: rgba(255, 255, 255, 0.12);
+  --lp-panel: rgba(18, 18, 20, 0.76);
+  --lp-panel-strong: #171719;
+  --lp-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  --lp-card-shadow: 0 34px 100px rgba(0, 0, 0, 0.42);
+  background:
+    linear-gradient(130deg, rgba(232, 0, 61, 0.12), transparent 32%),
+    linear-gradient(180deg, var(--lp-page) 0%, var(--lp-page-2) 100%);
+}
+
+.lpInner {
+  width: min(var(--lp-max), calc(100vw - 40px));
+  margin: 0 auto;
+}
+
+.lpNav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--lp-page) 86%, transparent);
+  border-bottom: 1px solid var(--lp-line);
+  backdrop-filter: blur(18px);
+}
+
+.lpNav .lpInner {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.lpBrand {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.lpBrand img {
+  width: 250px;
+  height: auto;
+  max-width: 42vw;
+  display: block;
+  object-fit: contain;
+}
+
+.lpNavActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lpIconBtn,
+.lpLangBtn,
+.lpSignInBtn,
+.lpBtnPrimary,
+.lpBtnGhost,
+.lpDeviceAction {
+  border: 0;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0;
+  transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+}
+
+.lpIconBtn,
+.lpLangBtn,
+.lpSignInBtn {
+  min-height: 40px;
+  border-radius: 8px;
+}
+
+.lpIconBtn,
+.lpLangBtn {
+  background: var(--lp-soft);
+}
+
+.lpIconBtn {
+  width: 40px;
+  padding: 0;
+}
+
+.lpLangBtn {
+  padding: 0 12px;
+}
+
+.lpSignInBtn {
+  padding: 0 16px;
+  background: transparent;
+  border: 1px solid var(--lp-line);
+}
+
+.lpIconBtn:hover,
+.lpLangBtn:hover,
+.lpSignInBtn:hover,
+.lpBtnPrimary:hover,
+.lpBtnGhost:hover,
+.lpDeviceAction:hover {
+  transform: translateY(-1px);
+}
+
+.lpIconBtn:hover,
+.lpLangBtn:hover {
+  background: color-mix(in srgb, var(--lp-ink) 10%, transparent);
+}
+
+.lpSignInBtn:hover {
+  border-color: color-mix(in srgb, var(--lp-red) 40%, var(--lp-line));
+}
+
+.lpHero {
+  padding: 34px 0 54px;
+}
+
+.lpHeroGrid {
+  min-height: min(650px, calc(100vh - 100px));
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.86fr);
+  align-items: center;
+  gap: 44px;
+}
+
+.lpHeroGrid > * {
+  min-width: 0;
+}
+
+.lpHeroCopy {
+  max-width: 630px;
+}
+
+.lpHero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 72px;
+  line-height: 0.96;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.lpHero h1 span {
+  color: var(--lp-red);
+}
+
+.lpHeroLead {
+  margin: 22px 0 0;
+  max-width: 545px;
+  color: var(--lp-muted);
+  font-size: 19px;
+  line-height: 1.62;
+}
+
+.lpHeroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.lpBtnPrimary,
+.lpBtnGhost {
+  min-height: 50px;
+  border-radius: 8px;
+  padding: 0 20px;
+}
+
+.lpBtnPrimary {
+  background: var(--lp-red);
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(232, 0, 61, 0.24);
+}
+
+.lpBtnPrimary:hover {
+  box-shadow: 0 22px 50px rgba(232, 0, 61, 0.3);
+}
+
+.lpBtnGhost {
+  background: var(--lp-panel-strong);
+  border: 1px solid var(--lp-line);
+}
+
+.lpHeroVisual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 510px;
+}
+
+.lpHeroVisual::before {
+  content: "";
+  position: absolute;
+  width: min(520px, 92%);
+  height: 68%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 46% 52%, rgba(232, 0, 61, 0.16), transparent 58%),
+    radial-gradient(circle at 68% 30%, rgba(35, 87, 255, 0.08), transparent 42%);
+  filter: blur(46px);
+  transform: translate(3%, 4%);
+}
+
+.lpHeroStage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 560px);
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.lpHeroStage::before,
+.lpHeroStage::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.lpHeroStage::before {
+  inset: 48px 22px 48px 20px;
+  border-radius: 48% 52% 46% 54%;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lp-ink) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--lp-ink) 8%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 34% 35%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.5) 45%, transparent 72%);
+  background-size: 38px 38px, 38px 38px, auto;
+  mask-image: radial-gradient(ellipse at center, #000 0 58%, transparent 74%);
+  opacity: 0.82;
+  transform: rotate(-4deg);
+}
+
+.lpHeroStage::after {
+  width: 68%;
+  height: 70px;
+  left: 16%;
+  bottom: 24px;
+  border-radius: 50%;
+  background: rgba(28, 24, 22, 0.16);
+  filter: blur(22px);
+  transform: rotate(-5deg);
+}
+
+[data-theme="dark"] .lpHeroStage::before {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 34% 35%, rgba(232, 0, 61, 0.18), rgba(255, 255, 255, 0.045) 45%, transparent 72%);
+}
+
+[data-theme="dark"] .lpHeroStage::after {
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.lpHeroBackCard,
+.lpHeroFrontCard,
+.lpHeroDeviceMini {
+  position: absolute;
+  pointer-events: none;
+}
+
+.lpHeroBackCard {
+  z-index: 1;
+  width: min(78%, 390px);
+  transform: translate(32px, -42px) rotate(8deg);
+  opacity: 0.86;
+  filter: drop-shadow(0 28px 52px rgba(26, 22, 20, 0.2));
+}
+
+.lpHeroFrontCard {
+  z-index: 2;
+  width: min(80%, 410px);
+  transform: translate(-28px, 12px) rotate(-5deg);
+  filter: drop-shadow(0 34px 64px rgba(26, 22, 20, 0.24));
+}
+
+.lpHeroBackCard,
+.lpHeroFrontCard,
+.lpMobileHeroCard,
+.lpProtocolPanel img {
+  border-radius: 4.9% / 7.8%;
+  clip-path: inset(0 round 4.9% / 7.8%);
+}
+
+.lpHeroDeviceMini {
+  z-index: 3;
+  right: 28px;
+  bottom: 24px;
+  width: 128px;
+  filter: drop-shadow(0 24px 42px rgba(26, 22, 20, 0.22));
+}
+
+.lpHeroDeviceMini img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+[data-theme="dark"] .lpHeroBackCard {
+  filter: drop-shadow(0 28px 52px rgba(0, 0, 0, 0.4));
+}
+
+[data-theme="dark"] .lpHeroFrontCard {
+  filter: drop-shadow(0 34px 64px rgba(0, 0, 0, 0.48));
+}
+
+.lpIosCard {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 360px);
+  max-height: 550px;
+  object-fit: contain;
+  filter: drop-shadow(0 34px 70px rgba(20, 18, 18, 0.22));
+  display: none;
+}
+
+.lpMobileHeroCard {
+  display: none;
+}
+
+.lpDevice {
+  position: relative;
+  width: min(100%, 390px);
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--lp-ink) 12%, transparent);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), transparent 30%),
+    color-mix(in srgb, var(--lp-panel-strong) 78%, transparent);
+  box-shadow: var(--lp-shadow);
+}
+
+[data-theme="dark"] .lpDevice {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 30%),
+    rgba(19, 19, 22, 0.9);
+}
+
+.lpDevice::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 68px;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--lp-ink) 18%, transparent);
+  transform: translateX(-50%);
+}
+
+.lpDeviceTop {
+  margin-top: 16px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lpDeviceTop span,
+.lpDeviceRows span {
+  color: var(--lp-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lpDeviceTop strong {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--lp-red) 12%, transparent);
+  color: var(--lp-red);
+  font-size: 12px;
+}
+
+.lpCardStage {
+  margin: 4px 0 14px;
+}
+
+.lpCardStage img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--lp-card-shadow);
+}
+
+.lpDeviceRows {
+  display: grid;
+  gap: 8px;
+}
+
+.lpDeviceRows div {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  background: var(--lp-panel);
+}
+
+.lpDeviceRows strong {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.lpDeviceAction {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 10px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: #111113;
+  color: #fff;
+}
+
+[data-theme="dark"] .lpDeviceAction {
+  background: #f5f2ef;
+  color: #111113;
+}
+
+.lpBenefits {
+  padding: 10px 0 74px;
+}
+
+.lpBenefitsHead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.lpBenefitsHead span {
+  color: var(--lp-red);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.lpBenefitsHead h2 {
+  width: min(620px, 100%);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 34px;
+  line-height: 1.04;
+  font-weight: 800;
+  text-align: right;
+}
+
+.lpBenefitGrid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.94fr 0.94fr;
+  gap: 12px;
+}
+
+.lpBenefit {
+  min-height: 410px;
+  overflow: hidden;
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  background: var(--lp-panel);
+  box-shadow: 0 18px 42px rgba(28, 24, 20, 0.05);
+}
+
+.lpBenefit:first-child {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--lp-red) 11%, transparent), transparent 58%),
+    var(--lp-panel-strong);
+}
+
+.lpBenefitMedia {
+  position: relative;
+  aspect-ratio: 1.72 / 1;
+  overflow: hidden;
+  background: #111113;
+}
+
+.lpBenefitMedia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 44%, rgba(0, 0, 0, 0.34)),
+    linear-gradient(135deg, rgba(232, 0, 61, 0.16), transparent 58%);
+}
+
+.lpBenefitMedia img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: scale(1.01);
+}
+
+.lpBenefitIcon {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--lp-red);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+}
+
+.lpBenefitBody {
+  padding: 22px;
+}
+
+.lpBenefitValue {
+  display: block;
+  margin: -2px 0 12px;
+  color: var(--lp-red);
+  font-family: var(--font-display);
+  font-size: 58px;
+  line-height: 0.9;
+  font-weight: 800;
+}
+
+.lpBenefit h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.18;
+}
+
+.lpBenefit p {
+  margin: 0;
+  color: var(--lp-muted);
+  font-size: 14px;
+  line-height: 1.56;
+}
+
+.lpShowcase,
+.lpUseCases,
+.lpProtocol {
+  padding: 0 0 76px;
+}
+
+.lpShowcaseGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.74fr);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.lpShowcaseMedia,
+.lpShowcaseCopy,
+.lpUseCaseHero,
+.lpUseCaseCard,
+.lpProtocolInner {
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  box-shadow: 0 18px 42px rgba(28, 24, 20, 0.05);
+}
+
+.lpShowcaseMedia {
+  min-height: 520px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 22% 28%, rgba(232, 0, 61, 0.13), transparent 34%),
+    radial-gradient(circle at 70% 62%, rgba(35, 87, 255, 0.08), transparent 36%),
+    color-mix(in srgb, var(--lp-panel-strong) 78%, transparent);
+}
+
+.lpShowcaseMedia img,
+.lpUseCaseHero img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.lpShowcaseScene {
+  position: relative;
+  background: #f7f4ef;
+}
+
+.lpShowcaseScene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(232, 0, 61, 0.08), transparent 42%),
+    linear-gradient(180deg, transparent 54%, rgba(12, 12, 14, 0.18));
+  pointer-events: none;
+}
+
+.lpShowcaseScene img {
+  object-position: 42% 50%;
+}
+
+[data-theme="dark"] .lpShowcaseMedia {
+  background:
+    radial-gradient(circle at 22% 28%, rgba(232, 0, 61, 0.18), transparent 34%),
+    radial-gradient(circle at 70% 62%, rgba(35, 87, 255, 0.11), transparent 36%),
+    #111113;
+}
+
+[data-theme="dark"] .lpShowcaseScene {
+  background: #111113;
+}
+
+.lpShowcaseCopy {
+  min-height: 520px;
+  padding: 28px;
+  display: grid;
+  align-content: space-between;
+  background:
+    linear-gradient(135deg, rgba(232, 0, 61, 0.075), transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72)),
+    var(--lp-panel-strong);
+  color: var(--lp-ink);
+}
+
+.lpShowcaseCopy > span,
+.lpUseCasesHead > span,
+.lpProtocolCopy > span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--lp-red);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.lpShowcaseCopy h2,
+.lpUseCasesHead h2,
+.lpProtocolCopy h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 42px;
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.lpShowcaseCopy > p,
+.lpUseCasesHead p,
+.lpProtocolCopy p {
+  margin: 16px 0 0;
+  color: color-mix(in srgb, currentColor 62%, transparent);
+  line-height: 1.58;
+}
+
+.lpShowcaseStats {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.lpShowcaseStats article {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 4px 12px;
+  padding: 14px;
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.lpShowcaseStats article > div {
+  grid-row: span 2;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(232, 0, 61, 0.16);
+  color: #ff2a5c;
+}
+
+.lpShowcaseStats strong,
+.lpUseCaseCard strong,
+.lpUseCaseHero strong {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.lpShowcaseStats p,
+.lpUseCaseCard p,
+.lpUseCaseHero p {
+  margin: 0;
+  color: var(--lp-muted);
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.lpShowcaseStats p {
+  color: var(--lp-muted);
+}
+
+[data-theme="dark"] .lpShowcaseCopy {
+  background:
+    linear-gradient(135deg, rgba(232, 0, 61, 0.16), transparent 48%),
+    #171719;
+  color: #fff;
+}
+
+[data-theme="dark"] .lpShowcaseStats article {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .lpShowcaseStats p {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.lpUseCasesHead {
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.lpUseCasesGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: 12px;
+}
+
+.lpUseCaseHero {
+  min-height: 520px;
+  position: relative;
+  overflow: hidden;
+  background: #111113;
+}
+
+.lpUseCaseHero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 28%, rgba(0, 0, 0, 0.74));
+}
+
+.lpUseCaseHero > div {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  color: #fff;
+}
+
+.lpUseCaseHero svg {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--lp-red);
+}
+
+.lpUseCaseHero p {
+  max-width: 460px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.lpUseCaseStack {
+  display: grid;
+  gap: 12px;
+}
+
+.lpUseCaseCard {
+  min-height: 164px;
+  padding: 20px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  background: var(--lp-panel);
+}
+
+.lpUseCaseCard > div {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--lp-red) 9%, transparent);
+  color: var(--lp-red);
+}
+
+.lpProtocolInner {
+  position: relative;
+  min-height: 430px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1fr);
+  gap: 44px;
+  align-items: center;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  color: var(--lp-ink);
+  box-shadow: none;
+}
+
+.lpProtocolInner::before,
+.lpProtocolInner::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.lpProtocolInner::before {
+  inset: 34px 34% 24px -4%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 46% 40%, rgba(232, 0, 61, 0.1), transparent 58%),
+    radial-gradient(circle at 72% 64%, rgba(35, 87, 255, 0.06), transparent 42%);
+  filter: blur(36px);
+}
+
+.lpProtocolInner::after {
+  width: 360px;
+  height: 360px;
+  right: 9%;
+  top: 6%;
+  border: 1px solid color-mix(in srgb, var(--lp-red) 16%, transparent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 58px color-mix(in srgb, var(--lp-red) 5%, transparent),
+    0 0 0 114px color-mix(in srgb, var(--lp-ink) 3%, transparent);
+  opacity: 0.72;
+}
+
+.lpProtocolCopy,
+.lpProtocolPanel {
+  position: relative;
+  z-index: 1;
+}
+
+.lpProtocolPanel {
+  position: relative;
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lp-ink) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--lp-ink) 7%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 74% 28%, rgba(232, 0, 61, 0.12), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.7)),
+    var(--lp-panel-strong);
+  background-size: 38px 38px, 38px 38px, auto, auto, auto;
+  box-shadow: 0 28px 74px rgba(28, 24, 20, 0.09);
+}
+
+.lpProtocolPanel::before,
+.lpProtocolPanel::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.lpProtocolPanel::before {
+  width: 250px;
+  height: 250px;
+  right: -70px;
+  top: -70px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 0, 61, 0.13);
+  box-shadow: 0 0 0 46px rgba(232, 0, 61, 0.045);
+}
+
+.lpProtocolPanel::after {
+  left: 42px;
+  right: 42px;
+  bottom: 42px;
+  height: 56px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(232, 0, 61, 0.12), rgba(35, 87, 255, 0.08)),
+    rgba(255, 255, 255, 0.56);
+  filter: blur(8px);
+}
+
+.lpProtocolPanel img {
+  position: absolute;
+  z-index: 1;
+  right: 28px;
+  top: 132px;
+  width: min(78%, 380px);
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 34px 58px rgba(26, 22, 20, 0.2));
+}
+
+.lpProtocolCard {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  z-index: 2;
+  width: min(295px, 62%);
+  padding: 18px 18px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 22px 48px rgba(28, 24, 20, 0.1);
+}
+
+.lpProtocolCard span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--lp-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lpProtocolCard strong {
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--lp-ink);
+}
+
+.lpProtocolRows {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lpProtocolRows span {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--lp-ink);
+  font-size: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 26px rgba(28, 24, 20, 0.07);
+}
+
+[data-theme="dark"] .lpProtocolPanel {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 74% 28%, rgba(232, 0, 61, 0.18), transparent 30%),
+    #171719;
+}
+
+[data-theme="dark"] .lpProtocolCard,
+[data-theme="dark"] .lpProtocolRows span {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+[data-theme="dark"] .lpProtocolCard strong {
+  color: #fff;
+}
+
+.lpFlow {
+  padding: 0 0 74px;
+}
+
+.lpFlow .lpInner {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.lpFlowIntro {
+  padding: 24px;
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--lp-red) 12%, transparent), transparent 56%),
+    var(--lp-panel-strong);
+  color: var(--lp-ink);
+}
+
+[data-theme="dark"] .lpFlowIntro {
+  background:
+    linear-gradient(135deg, rgba(232, 0, 61, 0.2), transparent 56%),
+    #171719;
+  color: #fff;
+}
+
+.lpFlowIntro span,
+.lpFinal span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--lp-red);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.lpFlowIntro p {
+  margin: 0;
+  max-width: 300px;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.lpFlowSteps,
+.lpTrustGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.lpFlowSteps {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.lpStep,
+.lpTrustPill {
+  border: 1px solid var(--lp-line);
+  border-radius: 8px;
+  background: var(--lp-panel);
+  box-shadow: 0 18px 42px rgba(28, 24, 20, 0.05);
+}
+
+.lpStep {
+  min-height: 205px;
+  padding: 20px;
+}
+
+.lpStepIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--lp-blue) 11%, transparent);
+  color: var(--lp-blue);
+}
+
+.lpStep h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.lpStep p {
+  margin: 0;
+  color: var(--lp-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.lpSection {
+  padding: 0 0 76px;
+}
+
+.lpSplit {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1fr);
+  gap: 54px;
+  align-items: center;
+  min-height: 390px;
+  padding: 0;
+  color: var(--lp-ink);
+}
+
+.lpSplit::before {
+  content: "";
+  position: absolute;
+  left: -6%;
+  top: 12%;
+  width: 48%;
+  height: 70%;
+  border-radius: 50%;
+  background: rgba(232, 0, 61, 0.07);
+  filter: blur(54px);
+  pointer-events: none;
+}
+
+.lpSplitCopy h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.lpSplitCopy .lpHeroLead {
+  color: var(--lp-muted);
+}
+
+.lpTrustList {
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  list-style: none;
+}
+
+.lpTrustList li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: start;
+  color: var(--lp-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.lpTrustList svg {
+  color: var(--lp-green);
+}
+
+.lpTrustGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+}
+
+.lpTrustGrid::before {
+  content: "";
+  position: absolute;
+  inset: 34px 20px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--lp-ink) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--lp-ink) 7%, transparent) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(ellipse at center, #000 0 48%, transparent 72%);
+  opacity: 0.46;
+  pointer-events: none;
+}
+
+.lpTrustPill {
+  position: relative;
+  z-index: 1;
+  min-height: 158px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  border-color: var(--lp-line);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68)),
+    var(--lp-panel-strong);
+  box-shadow: 0 22px 54px rgba(28, 24, 20, 0.07);
+}
+
+.lpTrustPill:nth-child(2),
+.lpTrustPill:nth-child(3) {
+  transform: translateY(18px);
+}
+
+.lpTrustPill > svg {
+  color: var(--lp-red);
+}
+
+.lpTrustPill strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.lpTrustPill span {
+  display: block;
+  color: var(--lp-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .lpTrustPill {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lpFinal {
+  padding: 0 0 42px;
+}
+
+.lpFinalInner {
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--lp-red) 12%, transparent), transparent 55%),
+    var(--lp-panel-strong);
+  border: 1px solid var(--lp-line);
+  box-shadow: var(--lp-shadow);
+}
+
+.lpFinal strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.lpFooter {
+  padding: 28px 0 42px;
+  border-top: 1px solid var(--lp-line);
+}
+
+.lpFooterInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lpFooterLogo {
+  width: 174px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.lpFooter p {
+  margin: 0;
+  color: var(--lp-muted);
+  font-size: 13px;
+}
+
+.lpFooter a {
+  margin-left: 12px;
+  color: var(--lp-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 980px) {
+  body:has(.lp) {
+    padding-bottom: 0;
+  }
+
+  .lpHeroGrid,
+  .lpFlow .lpInner,
+  .lpSplit {
+    grid-template-columns: 1fr;
+  }
+
+  .lpHeroGrid {
+    min-height: 0;
+    gap: 34px;
+  }
+
+  .lpHeroVisual {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    justify-content: center;
+    order: -1;
+  }
+
+  .lpHeroVisual::before {
+    width: min(360px, 78%);
+    height: 54%;
+    filter: blur(46px);
+  }
+
+  .lpHeroStage {
+    min-height: 390px;
+  }
+
+  .lpHeroDeviceMini {
+    width: 108px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .lpIosCard {
+    width: min(100%, 300px);
+    max-height: 455px;
+  }
+
+  .lpHeroCopy {
+    max-width: 760px;
+  }
+
+  .lpHero h1 {
+    font-size: 60px;
+  }
+
+  .lpFlowSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .lpBenefitsHead {
+    display: block;
+  }
+
+  .lpBenefitsHead h2 {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .lpBenefitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .lpStep {
+    min-height: auto;
+  }
+
+  .lpShowcaseGrid,
+  .lpUseCasesGrid,
+  .lpProtocolInner {
+    grid-template-columns: 1fr;
+  }
+
+  .lpShowcaseMedia,
+  .lpShowcaseCopy,
+  .lpUseCaseHero {
+    min-height: 420px;
+  }
+
+  .lpProtocolPanel {
+    min-height: 340px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 980px) {
+  .lpInner {
+    width: min(100% - 56px, 860px);
+  }
+
+  .lpNav .lpInner {
+    min-height: 66px;
+  }
+
+  .lpBrand img {
+    width: 220px;
+    max-width: 36vw;
+  }
+
+  .lpHero {
+    padding: 34px 0 58px;
+  }
+
+  .lpHeroGrid {
+    min-height: min(540px, calc(100vh - 96px));
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 0.68fr);
+    gap: 30px;
+  }
+
+  .lpHeroVisual {
+    order: 0;
+    min-height: 370px;
+    padding-top: 0;
+  }
+
+  .lpHeroVisual::before {
+    width: min(330px, 90%);
+    height: 58%;
+    filter: blur(52px);
+    transform: translate(3%, 7%);
+  }
+
+  .lpIosCard {
+    width: min(100%, 285px);
+    max-height: 430px;
+  }
+
+  .lpHeroStage {
+    min-height: 370px;
+  }
+
+  .lpHeroBackCard {
+    width: min(78%, 300px);
+  }
+
+  .lpHeroFrontCard {
+    width: min(82%, 320px);
+  }
+
+  .lpHeroCopy {
+    max-width: none;
+  }
+
+  .lpHero h1 {
+    font-size: 52px;
+  }
+
+  .lpHeroLead {
+    max-width: 430px;
+    font-size: 18px;
+    line-height: 1.58;
+  }
+
+  .lpBenefits,
+  .lpFlow,
+  .lpSection,
+  .lpShowcase,
+  .lpUseCases,
+  .lpProtocol {
+    padding-bottom: 64px;
+  }
+
+  .lpBenefitsHead {
+    display: flex;
+    align-items: start;
+  }
+
+  .lpBenefitsHead span {
+    margin-top: 8px;
+  }
+
+  .lpBenefitsHead h2 {
+    width: min(560px, 100%);
+    margin-top: 0;
+    font-size: 32px;
+    text-align: right;
+  }
+
+  .lpBenefitGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lpBenefit {
+    min-height: 370px;
+  }
+
+  .lpBenefitIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lpBenefitMedia {
+    aspect-ratio: 1.72 / 1;
+  }
+
+  .lpBenefitBody {
+    padding: 18px;
+  }
+
+  .lpBenefitValue {
+    font-size: 46px;
+  }
+
+  .lpBenefit h3 {
+    font-size: 16px;
+  }
+
+  .lpBenefit p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .lpFlow .lpInner {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .lpFlowIntro {
+    min-height: 124px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .lpFlowIntro p {
+    max-width: 660px;
+    font-size: 28px;
+  }
+
+  .lpFlowSteps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lpStep {
+    min-height: 214px;
+    padding: 18px;
+  }
+
+  .lpStepIcon {
+    margin-bottom: 18px;
+  }
+
+  .lpStep h3 {
+    font-size: 16px;
+  }
+
+  .lpStep p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .lpSplit {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .lpSplitCopy {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1fr);
+    gap: 12px 28px;
+    align-items: start;
+  }
+
+  .lpSplitCopy h2 {
+    font-size: 38px;
+  }
+
+  .lpSplitCopy .lpHeroLead {
+    margin-top: 14px;
+  }
+
+  .lpTrustList {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0;
+    align-self: center;
+  }
+
+  .lpTrustGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lpTrustPill {
+    min-height: 142px;
+  }
+
+  .lpTrustPill:nth-child(2),
+  .lpTrustPill:nth-child(3) {
+    transform: none;
+  }
+
+  .lpFinalInner {
+    min-height: 104px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 760px) {
+  .lpInner {
+    width: min(100% - 40px, 720px);
+  }
+
+  .lpBrand img {
+    width: 200px;
+  }
+
+  .lpHeroGrid {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 24px;
+  }
+
+  .lpHeroVisual {
+    min-height: 340px;
+  }
+
+  .lpHeroStage {
+    min-height: 320px;
+  }
+
+  .lpHeroBackCard {
+    width: 190px;
+    transform: translate(22px, -38px) rotate(8deg);
+  }
+
+  .lpHeroFrontCard {
+    width: 205px;
+    transform: translate(-16px, 6px) rotate(-5deg);
+  }
+
+  .lpHeroDeviceMini {
+    display: none;
+  }
+
+  .lpIosCard {
+    width: min(100%, 245px);
+    max-height: 370px;
+  }
+
+  .lpHero h1 {
+    font-size: 46px;
+  }
+
+  .lpHeroLead {
+    font-size: 17px;
+  }
+
+  .lpHeroCtas {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 300px;
+  }
+
+  .lpBenefitsHead {
+    display: block;
+  }
+
+  .lpBenefitsHead h2 {
+    width: min(540px, 100%);
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .lpBenefitGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lpBenefit:first-child {
+    grid-column: span 2;
+    min-height: 360px;
+  }
+
+  .lpBenefit:first-child p {
+    max-width: 420px;
+  }
+
+  .lpFlowSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .lpStep {
+    min-height: auto;
+  }
+
+  .lpSplitCopy {
+    display: block;
+  }
+
+  .lpTrustList {
+    margin-top: 24px;
+  }
+
+  .lpShowcaseMedia,
+  .lpShowcaseCopy,
+  .lpUseCaseHero {
+    min-height: 360px;
+  }
+
+  .lpShowcaseCopy h2,
+  .lpUseCasesHead h2,
+  .lpProtocolCopy h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .lpInner {
+    width: min(100% - 28px, var(--lp-max));
+  }
+
+  .lpNav .lpInner {
+    min-height: 62px;
+    gap: 10px;
+  }
+
+  .lpBrand img {
+    width: 200px;
+    height: auto;
+    max-width: 52vw;
+  }
+
+  .lpNavActions {
+    gap: 6px;
+  }
+
+  .lpIconBtn,
+  .lpLangBtn,
+  .lpSignInBtn {
+    min-height: 36px;
+    border-radius: 7px;
+    font-size: 13px;
+  }
+
+  .lpIconBtn {
+    width: 36px;
+  }
+
+  .lpLangBtn {
+    padding: 0 10px;
+  }
+
+  .lpLangBtn span {
+    display: none;
+  }
+
+  .lpSignInBtn {
+    padding: 0 11px;
+  }
+
+  .lpHero {
+    padding: 20px 0 28px;
+  }
+
+  .lpHeroCopy,
+  .lpBenefitsHead,
+  .lpSplitCopy,
+  .lpFinalInner,
+  .lpFooterInner {
+    text-align: center;
+  }
+
+  .lpHeroLead,
+  .lpBenefitsHead h2,
+  .lpSplitCopy .lpHeroLead {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .lpHeroVisual {
+    padding: 18px 0 8px;
+  }
+
+  .lpHeroVisual::before {
+    width: min(330px, 86%);
+    height: 72%;
+    filter: blur(44px);
+    transform: translate(0, 4%);
+  }
+
+  .lpIosCard {
+    position: absolute;
+    z-index: 3;
+    top: 36px;
+    right: max(-18px, calc((100vw - 340px) / 2 - 24px));
+    display: block;
+    width: clamp(126px, 36vw, 166px);
+    max-height: 238px;
+    filter: drop-shadow(0 20px 38px rgba(20, 18, 18, 0.2));
+    transform: rotate(2deg);
+  }
+
+  .lpHeroStage {
+    display: none;
+  }
+
+  .lpMobileHeroCard {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: min(100%, 340px);
+    border-radius: 16px;
+    filter: drop-shadow(0 30px 58px rgba(20, 18, 18, 0.2));
+    transform: rotate(-3deg);
+  }
+
+  .lpHero h1 {
+    font-size: 43px;
+  }
+
+  .lpHeroLead {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .lpHeroCtas,
+  .lpFinalInner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lpBtnPrimary,
+  .lpBtnGhost {
+    width: 100%;
+  }
+
+  .lpFlow {
+    padding-bottom: 56px;
+  }
+
+  .lpBenefits,
+  .lpShowcase,
+  .lpUseCases,
+  .lpProtocol {
+    padding-bottom: 56px;
+  }
+
+  .lpBenefitsHead h2 {
+    font-size: 28px;
+  }
+
+  .lpBenefit {
+    min-height: auto;
+  }
+
+  .lpBenefitMedia {
+    aspect-ratio: 1.72 / 1;
+  }
+
+  .lpBenefitValue {
+    font-size: 48px;
+  }
+
+  .lpFlowIntro p {
+    font-size: 22px;
+  }
+
+  .lpShowcaseMedia {
+    min-height: 330px;
+  }
+
+  .lpShowcaseScene img {
+    object-position: 36% 50%;
+  }
+
+  .lpShowcaseCopy {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .lpShowcaseCopy h2,
+  .lpUseCasesHead h2,
+  .lpProtocolCopy h2 {
+    font-size: 32px;
+  }
+
+  .lpShowcaseCopy > p,
+  .lpUseCasesHead p,
+  .lpProtocolCopy p {
+    font-size: 15px;
+  }
+
+  .lpShowcaseStats article {
+    grid-template-columns: 36px 1fr;
+    padding: 13px;
+  }
+
+  .lpShowcaseStats article > div {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lpUseCaseHero {
+    min-height: 390px;
+  }
+
+  .lpUseCaseHero > div {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .lpUseCaseCard {
+    min-height: auto;
+  }
+
+  .lpProtocolInner {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .lpProtocolPanel {
+    min-height: 340px;
+  }
+
+  .lpProtocolPanel img {
+    top: 122px;
+    right: 12px;
+    width: min(86%, 320px);
+  }
+
+  .lpProtocolCard {
+    left: 0;
+    width: min(280px, 82%);
+  }
+
+  .lpProtocolRows {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .lpSection {
+    padding-bottom: 58px;
+  }
+
+  .lpSplitCopy h2 {
+    font-size: 34px;
+  }
+
+  .lpTrustGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .lpTrustList li {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lpTrustPill {
+    min-height: auto;
+  }
+
+  .lpTrustPill:nth-child(2),
+  .lpTrustPill:nth-child(3) {
+    transform: none;
+  }
+
+  .lpFinal strong {
+    font-size: 24px;
+  }
+
+  .lpFooterInner {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .lpFooterLogo {
+    width: 150px;
+  }
+}
+
+@media (max-width: 380px) {
+  .lpBrand img {
+    width: 190px;
+    max-width: 52vw;
+  }
+
+  .lpSignInBtn {
+    display: none;
+  }
+
+  .lpHero h1 {
+    font-size: 38px;
+  }
+
+  .lpMobileHeroCard {
+    width: min(100%, 310px);
+  }
+}

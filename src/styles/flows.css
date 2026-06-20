@@ -1,0 +1,1339 @@
+/* New flow components only — do NOT override index.css modal/issueReview styles */
+
+.trustWalletBanner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 16px;
+  background: rgba(255, 23, 72, 0.06);
+  border: 1px solid rgba(255, 23, 72, 0.14);
+}
+
+.trustWalletBanner img {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.trustWalletBanner strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.trustWalletBanner span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.walletGuideList {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.walletGuideList li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.walletGuideList li b {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 23, 72, 0.1);
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.approvePanel {
+  margin: 16px 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+}
+
+.approvePanelRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.approvePanelRow span {
+  color: var(--muted);
+}
+
+.approvePanelRow strong {
+  text-align: right;
+  font-weight: 900;
+}
+
+.approvePanelNote {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 23, 72, 0.06);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.approvePanelNote svg {
+  flex-shrink: 0;
+  color: var(--red);
+  margin-top: 1px;
+}
+
+.issueCardModal .flowSteps:not(.issueReviewSteps) {
+  grid-template-columns: repeat(5, 1fr) !important;
+}
+
+.flowModalSecondary {
+  width: min(320px, 100%);
+  min-height: 44px;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+  justify-self: center;
+}
+
+.flowModalSecondary:hover {
+  color: var(--text);
+}
+
+.spin {
+  animation: flowSpin 900ms linear infinite;
+}
+
+@keyframes flowSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Issue card flow polish */
+.modal.flowModal.issueCardModal {
+  width: min(640px, calc(100vw - 40px)) !important;
+  padding: 28px !important;
+  border: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent) !important;
+  border-radius: 20px !important;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--modal-bg) 96%, transparent), var(--modal-bg)),
+    var(--modal-bg) !important;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.42) !important;
+  scrollbar-width: thin;
+}
+
+.modal.flowModal.issueCardModal .modalClose {
+  top: 18px !important;
+  right: 18px !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  background: color-mix(in srgb, var(--modal-text) 7%, transparent) !important;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.modal.flowModal.issueCardModal .modalClose:hover {
+  background: color-mix(in srgb, var(--modal-text) 12%, transparent) !important;
+  transform: translateY(-1px);
+}
+
+.modal.flowModal.issueCardModal .flowSteps {
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 6px !important;
+  margin: 0 52px 24px 0 !important;
+}
+
+.modal.flowModal.issueCardModal .flowSteps span {
+  height: 5px !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--modal-text) 9%, transparent) !important;
+}
+
+.modal.flowModal.issueCardModal .flowSteps span.active {
+  background: #e8003d !important;
+}
+
+.modal.flowModal.issueCardModal h3 {
+  margin: 0 !important;
+  padding-right: 48px !important;
+  color: var(--modal-text) !important;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 38px) !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+.modal.flowModal.issueCardModal > p {
+  max-width: 520px !important;
+  margin: 12px 0 22px !important;
+  color: var(--muted) !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.issueCardModal .issueReviewSteps {
+  display: none !important;
+}
+
+.issueCardModal .issueReview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.74fr);
+  gap: 14px;
+  align-items: stretch;
+  padding-top: 8px;
+}
+
+.issueCardModal .issueReviewHero {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  justify-content: start;
+  justify-items: start;
+  align-items: start;
+  column-gap: 12px;
+  row-gap: 8px;
+  padding: 0 52px 4px 0;
+  text-align: left;
+}
+
+.issueCardModal .issueReviewHero > span {
+  width: 34px !important;
+  height: 34px !important;
+  display: grid;
+  place-items: center;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: color-mix(in srgb, #18b961 12%, transparent);
+  color: #14a45a !important;
+}
+
+.issueCardModal .issueReviewHero h3 {
+  padding: 0 !important;
+  color: var(--modal-text) !important;
+  font-size: clamp(30px, 4vw, 40px) !important;
+}
+
+.issueCardModal .issueReviewHero p {
+  grid-column: 2;
+  max-width: 440px;
+  margin: 0 !important;
+  color: var(--muted) !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.issueCardModal .issueReviewCardFrame {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 1.586 / 1;
+  justify-self: stretch;
+  align-self: stretch;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, #e8003d 10%, transparent), transparent 58%),
+    color-mix(in srgb, var(--modal-text) 4%, transparent);
+  box-shadow: 0 22px 46px rgba(20, 12, 14, 0.16);
+}
+
+.issueCardModal .issueReviewCardFrame img {
+  position: absolute;
+  inset: 10%;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 32px rgba(20, 6, 10, 0.18));
+}
+
+.issueCardModal .issueReviewSummary {
+  display: grid;
+  align-content: center;
+  gap: 0;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.issueCardModal .issueReviewSummary div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  padding: 13px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent);
+}
+
+.issueCardModal .issueReviewSummary div:first-child {
+  padding-top: 0;
+}
+
+.issueCardModal .issueReviewSummary div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.issueCardModal .issueReviewSummary span {
+  color: var(--muted) !important;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.issueCardModal .issueReviewSummary strong {
+  color: var(--modal-text) !important;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.issueCardModal .issueReviewSummary .issueReviewFee {
+  color: #14a45a !important;
+}
+
+.issueCardModal .issueReview .issueWideAction,
+.modal.flowModal.issueCardModal .issueWideAction,
+.modal.flowModal.issueCardModal .modalPrimaryAction {
+  width: 100% !important;
+  min-height: 56px !important;
+  margin-top: 18px !important;
+  border-radius: 10px !important;
+  background: #e8003d !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 18px 38px rgba(232, 0, 61, 0.22) !important;
+}
+
+.issueCardModal .issueReview .issueWideAction {
+  grid-column: 1 / -1;
+  margin-top: 6px !important;
+}
+
+.modal.flowModal.issueCardModal .issueWideAction:hover,
+.modal.flowModal.issueCardModal .modalPrimaryAction:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 44px rgba(232, 0, 61, 0.28) !important;
+}
+
+.modal.flowModal.issueCardModal .issueWideAction:disabled,
+.modal.flowModal.issueCardModal .modalPrimaryAction:disabled {
+  opacity: 0.45 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.issueCardModal .trustWalletBanner,
+.issueCardModal .approvePanel,
+.issueCardModal .termsCheck,
+.issueCardModal .connectedAccountBadge,
+.issueCardModal .walletConnectError,
+.issueCardModal .issueSuccessNote {
+  border-radius: 12px !important;
+}
+
+.issueCardModal .trustWalletBanner {
+  margin: 18px 0 12px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent);
+  background: color-mix(in srgb, var(--modal-text) 4%, transparent);
+}
+
+.issueCardModal .trustWalletBanner img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+}
+
+.issueCardModal .trustWalletBanner strong {
+  color: var(--modal-text);
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.issueCardModal .trustWalletBanner span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.issueCardModal .walletGuideList {
+  gap: 8px;
+  margin: 14px 0 4px;
+}
+
+.issueCardModal .walletGuideList li {
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 58px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--modal-text) 4%, transparent);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.issueCardModal .walletGuideList li b {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: color-mix(in srgb, #e8003d 10%, transparent);
+  color: #e8003d;
+}
+
+.issueCardModal .connectedAccountBadge {
+  justify-content: flex-start;
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  background: color-mix(in srgb, #14a45a 10%, transparent);
+  color: #128452;
+}
+
+.issueCardModal .termsCheck {
+  align-items: flex-start;
+  margin: 16px 0 0;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent);
+  background: color-mix(in srgb, var(--modal-text) 4%, transparent);
+  color: var(--muted);
+}
+
+.issueCardModal .termsCheck input {
+  width: 18px;
+  height: 18px;
+  accent-color: #e8003d;
+}
+
+.issueCardModal .approvePanel {
+  margin: 18px 0 0;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--modal-text) 10%, transparent);
+  background: color-mix(in srgb, var(--modal-text) 4%, transparent);
+}
+
+.issueCardModal .approvePanelRow {
+  align-items: center;
+  min-height: 32px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid color-mix(in srgb, var(--modal-text) 8%, transparent);
+}
+
+.issueCardModal .approvePanelRow:last-of-type {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.issueCardModal .approvePanelRow span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.issueCardModal .approvePanelRow strong {
+  color: var(--modal-text);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.issueCardModal .approvePanelNote {
+  margin-top: 4px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #e8003d 7%, transparent);
+}
+
+.issueCardModal .flowLoader,
+.issueCardModal .flowSuccess {
+  min-height: 360px;
+}
+
+.issueCardModal .flowLoader strong,
+.issueCardModal .flowSuccess h3 {
+  color: var(--modal-text) !important;
+}
+
+.issueCardModal .flowSuccess > span {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: #e8003d;
+  box-shadow: 0 18px 36px rgba(232, 0, 61, 0.22);
+}
+
+.issueCardModal .issueSuccessNote {
+  background: color-mix(in srgb, #e8003d 7%, transparent);
+  color: #e8003d;
+}
+
+[data-theme="dark"] .modal.flowModal.issueCardModal {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  background:
+    linear-gradient(180deg, rgba(23, 23, 25, 0.98), rgba(11, 11, 12, 0.98)),
+    var(--modal-bg) !important;
+}
+
+[data-theme="dark"] .issueCardModal .issueReviewCardFrame,
+[data-theme="dark"] .issueCardModal .walletGuideList li,
+[data-theme="dark"] .issueCardModal .approvePanel,
+[data-theme="dark"] .issueCardModal .termsCheck {
+  border-color: rgba(255, 255, 255, 0.11) !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+}
+
+[data-theme="dark"] .issueCardModal .issueReviewSummary div {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 760px) {
+  .modal.flowModal.issueCardModal {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: max(18px, env(safe-area-inset-top)) 18px max(22px, env(safe-area-inset-bottom)) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .modal.flowModal.issueCardModal .modalClose {
+    top: max(16px, env(safe-area-inset-top)) !important;
+    right: 16px !important;
+  }
+
+  .modal.flowModal.issueCardModal .flowSteps {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    margin: 48px 0 20px !important;
+  }
+
+  .modal.flowModal.issueCardModal h3 {
+    padding-right: 46px !important;
+    font-size: 30px !important;
+  }
+
+  .issueCardModal .issueReview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 42px;
+  }
+
+  .issueCardModal .issueReviewHero {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .issueCardModal .issueReviewHero p {
+    grid-column: 1;
+    max-width: 330px;
+    font-size: 14px !important;
+  }
+
+  .issueCardModal .issueReviewCardFrame {
+    width: min(100%, 320px);
+    justify-self: center;
+  }
+
+  .issueCardModal .issueReviewSummary {
+    padding: 0;
+  }
+
+  .issueCardModal .issueReviewSummary div {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 13px 0;
+  }
+
+  .issueCardModal .issueReviewSummary span {
+    text-transform: none;
+  }
+
+  .modal.flowModal.issueCardModal .issueWideAction,
+  .modal.flowModal.issueCardModal .modalPrimaryAction {
+    min-height: 54px !important;
+  }
+
+  .issueCardModal .walletGuideList li {
+    min-height: 54px;
+    padding: 11px 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .modal.flowModal.issueCardModal h3,
+  .issueCardModal .issueReviewHero h3 {
+    font-size: 28px !important;
+  }
+
+  .issueCardModal .issueReviewCardFrame {
+    width: min(100%, 310px);
+  }
+
+  .issueCardModal .approvePanelRow {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+/* Premium registration and sign-in modals */
+.flowModalOverlay {
+  background:
+    linear-gradient(180deg, rgba(250, 247, 244, 0.7), rgba(16, 13, 15, 0.3)),
+    rgba(12, 11, 12, 0.42) !important;
+  backdrop-filter: blur(16px);
+}
+
+.modal.flowModal.issueCardModal,
+.modal.flowModal.signInModal {
+  position: relative;
+  overflow: hidden auto !important;
+  width: min(680px, calc(100vw - 40px)) !important;
+  max-height: min(820px, calc(100dvh - 40px)) !important;
+  padding: 30px !important;
+  border: 1px solid rgba(27, 24, 27, 0.08) !important;
+  border-radius: 26px !important;
+  background:
+    linear-gradient(140deg, rgba(255, 246, 248, 0.96) 0%, rgba(255, 255, 255, 0.98) 42%, rgba(247, 244, 239, 0.98) 100%),
+    #ffffff !important;
+  box-shadow:
+    0 44px 120px rgba(30, 23, 25, 0.26),
+    0 14px 38px rgba(232, 0, 61, 0.08) !important;
+  color: #181116 !important;
+}
+
+.modal.flowModal.signInModal {
+  width: min(540px, calc(100vw - 40px)) !important;
+}
+
+.modal.flowModal.issueCardModal::before,
+.modal.flowModal.signInModal::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #e8003d, #ff6a7f 48%, #e8003d);
+  pointer-events: none;
+}
+
+.modal.flowModal.issueCardModal .modalClose,
+.modal.flowModal.signInModal .modalClose {
+  top: 18px !important;
+  right: 18px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: 1px solid rgba(24, 17, 22, 0.08) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: #181116 !important;
+  box-shadow: 0 10px 24px rgba(24, 17, 22, 0.08);
+}
+
+.modal.flowModal.issueCardModal .flowSteps,
+.modal.flowModal.signInModal .flowSteps {
+  gap: 7px !important;
+  margin: 4px 54px 24px 0 !important;
+}
+
+.modal.flowModal.issueCardModal .flowSteps span,
+.modal.flowModal.signInModal .flowSteps span {
+  height: 5px !important;
+  border-radius: 999px !important;
+  background: rgba(24, 17, 22, 0.08) !important;
+}
+
+.modal.flowModal.issueCardModal .flowSteps span.active,
+.modal.flowModal.signInModal .flowSteps span.active {
+  background: linear-gradient(90deg, #e8003d, #ff5068) !important;
+}
+
+.flowIntroBlock {
+  display: grid;
+  gap: 10px;
+  margin: 0 52px 22px 0;
+}
+
+.flowIntroBlock > span {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(232, 0, 61, 0.08);
+  color: #e8003d;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.flowIntroBlock h3,
+.modal.flowModal.issueCardModal h3,
+.modal.flowModal.signInModal h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #181116 !important;
+  font-family: var(--font-display);
+  font-size: 34px !important;
+  font-weight: 920 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+.flowIntroBlock p,
+.modal.flowModal.issueCardModal > p,
+.modal.flowModal.signInModal > p {
+  max-width: 520px !important;
+  margin: 0 !important;
+  color: #6f6870 !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.issueStepShell,
+.signInStepShell {
+  display: grid;
+  align-content: start;
+}
+
+.issueCardModal .issueReview {
+  grid-template-columns: minmax(0, 1.06fr) minmax(210px, 0.72fr) !important;
+  gap: 16px !important;
+  padding-top: 8px !important;
+}
+
+.issueCardModal .issueReviewHero {
+  grid-column: 1 / -1 !important;
+  grid-template-columns: 40px minmax(0, 1fr) !important;
+  column-gap: 13px !important;
+  row-gap: 8px !important;
+  padding: 0 52px 2px 0 !important;
+  text-align: left !important;
+  justify-items: start !important;
+}
+
+.issueCardModal .issueReviewHero > span {
+  width: 40px !important;
+  height: 40px !important;
+  border: 0 !important;
+  border-radius: 13px !important;
+  background: #181116 !important;
+  color: #ffffff !important;
+  box-shadow: 0 16px 34px rgba(24, 17, 22, 0.16);
+}
+
+.issueCardModal .issueReviewHero h3 {
+  font-size: 36px !important;
+  line-height: 1 !important;
+}
+
+.issueCardModal .issueReviewHero p {
+  grid-column: 2 !important;
+  max-width: 440px !important;
+  color: #6f6870 !important;
+}
+
+.issueCardModal .issueReviewCardFrame {
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.issueCardModal .issueReviewCardFrame img {
+  inset: 4% !important;
+  width: 92% !important;
+  height: 92% !important;
+  object-fit: contain !important;
+  border-radius: 4.9% / 7.8%;
+  clip-path: inset(0 round 4.9% / 7.8%);
+  filter: drop-shadow(0 26px 34px rgba(24, 17, 22, 0.16));
+}
+
+.issueCardModal .issueReviewSummary {
+  align-content: end !important;
+  padding: 2px 0 !important;
+}
+
+.issueCardModal .issueReviewSummary div {
+  padding: 14px 0 !important;
+  border-bottom: 1px solid rgba(24, 17, 22, 0.1) !important;
+}
+
+.issueCardModal .issueReviewSummary span {
+  color: #8a8389 !important;
+  font-size: 12px !important;
+  font-weight: 850 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+}
+
+.issueCardModal .issueReviewSummary strong {
+  color: #181116 !important;
+  font-size: 16px !important;
+  font-weight: 920 !important;
+}
+
+.issueCardModal .issueReviewBenefits {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.issueCardModal .issueReviewBenefits article {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid rgba(232, 0, 61, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #181116;
+  box-shadow: none;
+}
+
+.issueCardModal .issueReviewBenefits svg {
+  flex: 0 0 auto;
+  color: #e8003d;
+  stroke-width: 2.25;
+}
+
+.issueCardModal .issueReviewBenefits span {
+  min-width: 0;
+  color: #181116;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.issueCardModal .trustWalletBanner,
+.signInModal .trustWalletBanner {
+  margin: 0 0 14px !important;
+  padding: 15px !important;
+  border: 1px solid rgba(24, 17, 22, 0.08) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.issueCardModal .trustWalletBanner img,
+.signInModal .trustWalletBanner img {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.issueCardModal .trustWalletBanner strong,
+.signInModal .trustWalletBanner strong {
+  color: #181116 !important;
+  font-size: 15px !important;
+}
+
+.issueCardModal .trustWalletBanner span,
+.signInModal .trustWalletBanner span {
+  color: #756f76 !important;
+  font-size: 13px !important;
+}
+
+.issueCardModal .walletGuideList {
+  gap: 0 !important;
+  margin: 4px 0 2px !important;
+  border-top: 1px solid rgba(24, 17, 22, 0.08);
+}
+
+.issueCardModal .walletGuideList li {
+  min-height: 60px !important;
+  padding: 14px 2px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(24, 17, 22, 0.08) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #6f6870 !important;
+}
+
+.issueCardModal .walletGuideList li b {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  background: #181116 !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+}
+
+.issueCardModal .termsCheck,
+.issueCardModal .approvePanel {
+  border: 1px solid rgba(24, 17, 22, 0.08) !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.issueCardModal .issueTermsStack {
+  display: grid;
+  gap: 10px;
+}
+
+.issueCardModal .issueTermsStack .termsCheck {
+  margin: 0 !important;
+}
+
+.issueCardModal .issueBalanceReady,
+.issueCardModal .issueBalanceError {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 18px;
+  padding: 14px 15px;
+}
+
+.issueCardModal .issueBalanceReady {
+  color: #116d3f;
+  background:
+    linear-gradient(135deg, rgba(27, 179, 111, 0.12), rgba(27, 179, 111, 0.04)),
+    #f6fff9;
+  border: 1px solid rgba(27, 179, 111, 0.18);
+}
+
+.issueCardModal .issueBalanceError {
+  color: #a31825;
+  background:
+    linear-gradient(135deg, rgba(240, 45, 58, 0.12), rgba(240, 45, 58, 0.04)),
+    #fff7f7;
+  border: 1px solid rgba(240, 45, 58, 0.18);
+}
+
+.issueCardModal .issueBalanceError strong,
+.issueCardModal .issueBalanceError span {
+  display: block;
+}
+
+.issueCardModal .issueBalanceError strong {
+  margin-bottom: 3px;
+  color: #8f101c;
+  font-size: 0.92rem;
+}
+
+.issueCardModal .issueBalanceError span,
+.issueCardModal .issueBalanceReady span {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.issueCardModal .approvePanel {
+  margin: 0 !important;
+  padding: 18px !important;
+}
+
+.issueCardModal .approvePanelRow {
+  min-height: 38px !important;
+  padding-bottom: 12px !important;
+}
+
+.issueCardModal .approvePanelRow span {
+  color: #7d767d !important;
+  font-size: 13px !important;
+}
+
+.issueCardModal .approvePanelRow strong {
+  color: #181116 !important;
+  font-size: 14px !important;
+}
+
+.issueCardModal .approvePanelNote {
+  margin-top: 8px !important;
+  border-radius: 14px !important;
+  background: rgba(232, 0, 61, 0.07) !important;
+  color: #6f6870 !important;
+}
+
+.issueCardModal .approvePanelNote svg {
+  color: #e8003d !important;
+}
+
+.issueCardModal .connectedAccountBadge,
+.signInModal .connectedAccountBadge {
+  margin: 0 0 14px !important;
+  border-radius: 14px !important;
+  background: rgba(24, 17, 22, 0.06) !important;
+  color: #181116 !important;
+}
+
+.signInHeroVisual {
+  position: relative;
+  height: 172px;
+  display: grid;
+  place-items: center;
+  margin: 8px 0 22px;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(232, 0, 61, 0.12), rgba(255, 255, 255, 0.34) 52%, rgba(24, 17, 22, 0.05)),
+    rgba(255, 255, 255, 0.5);
+}
+
+.signInHeroVisual img {
+  width: min(270px, 72%);
+  height: auto;
+  display: block;
+  transform: rotate(-4deg);
+  filter: drop-shadow(0 24px 34px rgba(24, 17, 22, 0.17));
+  border-radius: 4.9% / 7.8%;
+  clip-path: inset(0 round 4.9% / 7.8%);
+}
+
+.signInHeroVisual > span {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #181116;
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgba(24, 17, 22, 0.18);
+}
+
+.signInIntroBlock {
+  margin-right: 48px;
+}
+
+.signInModal .flowSuccess,
+.issueCardModal .flowSuccess,
+.signInModal .flowLoader,
+.issueCardModal .flowLoader {
+  min-height: 360px !important;
+}
+
+.signInModal .flowSuccess > span,
+.issueCardModal .flowSuccess > span {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 18px !important;
+  background: #181116 !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 42px rgba(24, 17, 22, 0.18) !important;
+}
+
+.signInModal .flowSuccess h3,
+.issueCardModal .flowSuccess h3,
+.signInModal .flowLoader strong,
+.issueCardModal .flowLoader strong {
+  color: #181116 !important;
+}
+
+.signInModal .flowSuccess p,
+.issueCardModal .flowSuccess p,
+.signInModal .flowLoader p,
+.issueCardModal .flowLoader p {
+  color: #6f6870 !important;
+}
+
+.signInModal .signInError > span {
+  background: rgba(232, 0, 61, 0.1) !important;
+  color: #e8003d !important;
+}
+
+.issueCardModal .issueSuccessNote {
+  background: rgba(232, 0, 61, 0.08) !important;
+  color: #e8003d !important;
+}
+
+.walletConnectError {
+  border-radius: 14px !important;
+  background: rgba(232, 0, 61, 0.08) !important;
+}
+
+.modal.flowModal.issueCardModal .issueWideAction,
+.modal.flowModal.issueCardModal .modalPrimaryAction,
+.modal.flowModal.signInModal .issueWideAction,
+.modal.flowModal.signInModal .modalPrimaryAction {
+  width: 100% !important;
+  min-height: 56px !important;
+  margin-top: 18px !important;
+  border-radius: 14px !important;
+  background: #e8003d !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 18px 38px rgba(232, 0, 61, 0.22) !important;
+}
+
+.modal.flowModal.issueCardModal .issueWideAction:hover,
+.modal.flowModal.issueCardModal .modalPrimaryAction:hover,
+.modal.flowModal.signInModal .issueWideAction:hover,
+.modal.flowModal.signInModal .modalPrimaryAction:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 24px 48px rgba(232, 0, 61, 0.28) !important;
+}
+
+.modal.flowModal.issueCardModal .modalSecondaryAction {
+  width: 100% !important;
+  margin-top: 10px !important;
+  min-height: 48px !important;
+  border: 1px solid rgba(24, 17, 22, 0.12) !important;
+  border-radius: 14px !important;
+  color: #24161b !important;
+  -webkit-text-fill-color: #24161b !important;
+  background: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 850 !important;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+
+.modal.flowModal.issueCardModal .modalSecondaryAction:hover {
+  border-color: rgba(232, 0, 61, 0.28) !important;
+  color: #c91625 !important;
+  -webkit-text-fill-color: #c91625 !important;
+}
+
+.flowModalSecondary {
+  color: #6f6870 !important;
+}
+
+[data-theme="dark"] .flowModalOverlay {
+  background: rgba(5, 5, 6, 0.74) !important;
+}
+
+[data-theme="dark"] .modal.flowModal.issueCardModal,
+[data-theme="dark"] .modal.flowModal.signInModal {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background:
+    linear-gradient(140deg, rgba(40, 15, 21, 0.98) 0%, rgba(21, 21, 23, 0.98) 42%, rgba(10, 10, 11, 0.98) 100%),
+    #111113 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .flowIntroBlock h3,
+[data-theme="dark"] .modal.flowModal.issueCardModal h3,
+[data-theme="dark"] .modal.flowModal.signInModal h3,
+[data-theme="dark"] .issueCardModal .issueReviewHero h3,
+[data-theme="dark"] .issueCardModal .issueReviewSummary strong,
+[data-theme="dark"] .issueCardModal .issueReviewBenefits article,
+[data-theme="dark"] .issueCardModal .issueReviewBenefits span,
+[data-theme="dark"] .issueCardModal .trustWalletBanner strong,
+[data-theme="dark"] .signInModal .trustWalletBanner strong,
+[data-theme="dark"] .issueCardModal .approvePanelRow strong,
+[data-theme="dark"] .signInModal .flowSuccess h3,
+[data-theme="dark"] .issueCardModal .flowSuccess h3,
+[data-theme="dark"] .signInModal .flowLoader strong,
+[data-theme="dark"] .issueCardModal .flowLoader strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .flowIntroBlock p,
+[data-theme="dark"] .modal.flowModal.issueCardModal > p,
+[data-theme="dark"] .modal.flowModal.signInModal > p,
+[data-theme="dark"] .issueCardModal .issueReviewHero p,
+[data-theme="dark"] .issueCardModal .walletGuideList li,
+[data-theme="dark"] .issueCardModal .trustWalletBanner span,
+[data-theme="dark"] .signInModal .trustWalletBanner span,
+[data-theme="dark"] .issueCardModal .approvePanelRow span,
+[data-theme="dark"] .signInModal .flowSuccess p,
+[data-theme="dark"] .issueCardModal .flowSuccess p,
+[data-theme="dark"] .signInModal .flowLoader p,
+[data-theme="dark"] .issueCardModal .flowLoader p {
+  color: rgba(255, 255, 255, 0.66) !important;
+}
+
+[data-theme="dark"] .issueCardModal .trustWalletBanner,
+[data-theme="dark"] .signInModal .trustWalletBanner,
+[data-theme="dark"] .issueCardModal .termsCheck,
+[data-theme="dark"] .issueCardModal .approvePanel,
+[data-theme="dark"] .issueCardModal .issueReviewBenefits article,
+[data-theme="dark"] .signInHeroVisual {
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+}
+
+[data-theme="dark"] .issueCardModal .issueBalanceReady {
+  color: #92efbd;
+  background: rgba(27, 179, 111, 0.12) !important;
+  border-color: rgba(146, 239, 189, 0.2) !important;
+}
+
+[data-theme="dark"] .issueCardModal .issueBalanceError {
+  color: #ffb0b8;
+  background: rgba(240, 45, 58, 0.13) !important;
+  border-color: rgba(255, 176, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .issueCardModal .issueBalanceError strong {
+  color: #ffd4d8;
+}
+
+[data-theme="dark"] .modal.flowModal.issueCardModal .modalSecondaryAction {
+  color: #f7edf0 !important;
+  -webkit-text-fill-color: #f7edf0 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .issueCardModal .walletGuideList,
+[data-theme="dark"] .issueCardModal .walletGuideList li,
+[data-theme="dark"] .issueCardModal .issueReviewSummary div {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .modal.flowModal.issueCardModal .modalClose,
+[data-theme="dark"] .modal.flowModal.signInModal .modalClose,
+[data-theme="dark"] .issueCardModal .connectedAccountBadge,
+[data-theme="dark"] .signInModal .connectedAccountBadge {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 760px) {
+  .modal.flowModal.issueCardModal,
+  .modal.flowModal.signInModal {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: max(22px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom)) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .modal.flowModal.issueCardModal .flowSteps {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    margin: 48px 0 22px !important;
+  }
+
+  .modal.flowModal.signInModal .flowSteps {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    margin: 48px 0 22px !important;
+  }
+
+  .flowIntroBlock,
+  .signInIntroBlock {
+    margin-right: 0 !important;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .flowIntroBlock h3,
+  .modal.flowModal.issueCardModal h3,
+  .modal.flowModal.signInModal h3,
+  .issueCardModal .issueReviewHero h3 {
+    font-size: 30px !important;
+  }
+
+  .flowIntroBlock p {
+    max-width: 340px !important;
+  }
+
+  .issueCardModal .issueReview {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+    padding-top: 42px !important;
+  }
+
+  .issueCardModal .issueReviewHero {
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+    text-align: center !important;
+    justify-items: center !important;
+  }
+
+  .issueCardModal .issueReviewHero p {
+    grid-column: 1 !important;
+    max-width: 330px !important;
+  }
+
+  .issueCardModal .issueReviewCardFrame {
+    width: min(100%, 330px) !important;
+    justify-self: center !important;
+  }
+
+  .issueCardModal .issueReviewSummary div {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+
+  .issueCardModal .issueReviewBenefits {
+    grid-template-columns: 1fr !important;
+  }
+
+  .signInHeroVisual {
+    height: 158px;
+    margin-top: 38px;
+  }
+
+  .signInHeroVisual img {
+    width: min(250px, 74%);
+  }
+}
+
+@media (max-width: 420px) {
+  .modal.flowModal.issueCardModal,
+  .modal.flowModal.signInModal {
+    padding-inline: 16px !important;
+  }
+
+  .flowIntroBlock h3,
+  .modal.flowModal.issueCardModal h3,
+  .modal.flowModal.signInModal h3,
+  .issueCardModal .issueReviewHero h3 {
+    font-size: 28px !important;
+  }
+
+  .issueCardModal .issueReviewCardFrame {
+    width: min(100%, 310px) !important;
+  }
+
+  .issueCardModal .approvePanelRow {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+    align-items: start !important;
+  }
+}
